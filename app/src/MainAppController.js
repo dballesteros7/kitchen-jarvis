@@ -11,6 +11,7 @@
   kj.MainAppController = function($state, $mdSidenav, Recorder, timerService, currentRecipeService) {
     this.$state_ = $state;
     this.$mdSidenav_ = $mdSidenav;
+    this.recorderService = Recorder;
   };
 
   kj.MainAppController.prototype.toggleLeftSidenav = function() {

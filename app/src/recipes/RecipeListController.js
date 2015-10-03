@@ -12,5 +12,9 @@
     this.recipes = recipes;
   };
 
+  kj.RecipeListController.prototype.selectTile = function(recipe) {
+
+  };
+
   kj.module.controller('RecipeListController', ['recipes', kj.RecipeListController]);
 })();

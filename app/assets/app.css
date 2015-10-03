@@ -16,9 +16,6 @@ md-toolbar {
 
 /* Recipe list */
 
-.recipe-list .recipe-list-item {
-  width: 40%;
-}
 
 .recipe-view {
   width: 50%;
@@ -32,4 +29,12 @@ md-toolbar {
 
 .no-margin {
   margin: 0;
+}
+
+.tile-image {
+  width: 100%;
+}
+
+.voice-notice {
+  margin-left: 14px;
 }

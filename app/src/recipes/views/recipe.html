@@ -1,16 +1,19 @@
 <div layout="column" layout-align="start center">
-  <div layout="column" class="recipe-view md-whiteframe-z2 md-padding">
+  <div layout="column" class="recipe-view md-whiteframe-z4 md-padding">
     <div layout="row" layout-align="start center">
-      <h3 flex class="md-headline">
-        {{ctrl.recipe.Title}}
+      <h3 flex class="md-headline" layout="column">
+        <span>{{ctrl.recipe.Title}}</span>
         <span class="md-caption">By {{ctrl.recipe.Poster.UserName}}</span>
       </h3>
-      <md-button class="md-raised md-primary" ng-click="ctrl.startRecipe()" ng-hide="ctrl.isStarted()">
-        Start recipe
-      </md-button>
-      <md-button class="md-raised md-accent" ng-click="ctrl.finishRecipe()" ng-show="ctrl.isStarted()">
-        Recipe finished
-      </md-button>
+      <div layout="column">
+        <md-button class="md-accent" ng-click="ctrl.startRecipe()" ng-hide="ctrl.isStarted()">
+          Enable voice assistance
+        </md-button>
+        <md-button class="md-warn" ng-click="ctrl.finishRecipe()" ng-show="ctrl.isStarted()">
+          Disable voice assistance
+        </md-button>
+        <span class="md-caption voice-notice" ng-show="ctrl.isStarted()">Voice assistance is activated.</span>
+      </div>
     </div>
     <h4 class="md-title">Ingredients</h4>
     <md-list>

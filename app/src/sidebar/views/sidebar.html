@@ -8,19 +8,15 @@
       <h4 class="md-title">Navigate</h4>
     </md-list-item>
     <md-list-item ng-click="ctrl.navigateTo('recipeList')">
-      <md-icon>view_list</md-icon>
+      <md-icon class="md-primary">view_list</md-icon>
       <p>View recipes</p>
     </md-list-item>
     <md-list-item ng-click="ctrl.goToCurrentRecipe()" ng-disabled="!ctrl.hasCurrentRecipe()">
-      <md-icon>bookmark</md-icon>
+      <md-icon class="md-primary">bookmark</md-icon>
       <div flex layout="column">
         <p class="no-margin">Current recipe</p>
         <p class="md-body-2 no-margin">{{ctrl.getCurrentRecipe().Title}}</p>
       </div>
-    </md-list-item>
-    <md-list-item ng-click="ctrl.navigateTo('recipeList')">
-      <md-icon>alarm</md-icon>
-      <p>Timers</p>
     </md-list-item>
     <md-divider></md-divider>
     <md-list-item>
@@ -31,26 +27,16 @@
       <p ng-show="ctrl.recorderService.enabled">Disable voice controls</p>
       <md-switch ng-model="ctrl.recorderService.enabled"></md-switch>
     </md-list-item>
-    <md-list-item>
-      <md-input-container flex>
-        <label>Assistant</label>
-        <md-select ng-model="ctrl.voiceService.voiceModel">
-          <md-option ng-repeat="voice in ctrl.voiceService.voices" value="{{voice.value}}">
-            {{voice.name}}
-          </md-option>
-        </md-select>
-      </md-input-container>
-    </md-list-item>
     <md-divider></md-divider>
     <md-list-item>
       <h4 class="md-title">About</h4>
     </md-list-item>
     <md-list-item>
-      <md-icon>people</md-icon>
+      <md-icon class="md-accent">people</md-icon>
       <p>The Team</p>
     </md-list-item>
     <md-list-item>
-      <md-icon>build</md-icon>
+      <md-icon class="md-accent">build</md-icon>
       <p>The Technology</p>
     </md-list-item>
   </md-list>
