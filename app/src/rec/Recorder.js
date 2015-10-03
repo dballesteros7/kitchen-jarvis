@@ -81,7 +81,8 @@
             result = result.substring(helper.name.length);
             this.$scope_.$broadcast('speechResult', {
               text: result,
-              voiceModel: helper.value
+              voiceModel: helper.value,
+              swear: helper.name === 'Gordon'
             });
             break;
           }

@@ -34,6 +34,9 @@
     }, {
       name: 'Anna',
       value: 'en-GB_KateVoice'
+    }, {
+      name: 'Gordon',
+      value: 'en-US_MichaelVoice'
     }
   ];
   kj.VoiceService.VOICE_MODEL_KEY = 'voiceModel';

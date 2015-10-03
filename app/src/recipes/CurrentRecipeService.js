@@ -68,10 +68,19 @@
         console.log(response);
         this.voiceService_.play(response, detail.voiceModel);
       }.bind(this)).catch(function () {
-        this.voiceService_.play('Sorry, I did not understand that.', detail.voiceModel);
+        if (detail.swear) {
+          this.voiceService_.play('I did not understand shit. Speak fucking clear', detail.voiceModel);
+        } else {
+          this.voiceService_.play('Sorry, I did not understand that.', detail.voiceModel);
+        }
       }.bind(this));
     } else {
-      this.voiceService_.play('First you need to start a recipe.', detail.voiceModel)
+      if (detail.swear) {
+        this.voiceService_.play('Open a recipe first. Bugger off!', detail.voiceModel);
+      } else {
+        this.voiceService_.play('First you need to start a recipe.', detail.voiceModel);
+      }
+
     }
     console.log('onResult recipe exit ' + Date.now());
   };

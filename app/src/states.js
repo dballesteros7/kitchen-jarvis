@@ -33,7 +33,8 @@
     }
   };
 
-  kj.module.config(function($stateProvider) {
+  kj.module.config(function($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise('/recipes');
     $stateProvider.state(kj.states.recipeList);
     $stateProvider.state(kj.states.recipeView);
   });
