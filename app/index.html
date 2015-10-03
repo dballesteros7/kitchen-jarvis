@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Gordon: Master Cooking Assistant</title>
+  <title>GourMate</title>
   <link rel="shortcut icon" href="assets/Hamburger.ico"/>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -34,9 +34,12 @@
     <md-button class="md-margin menu" ng-click="ctrl.toggleLeftSidenav()">
       <md-icon>menu</md-icon>
     </md-button>
-    <h1 flex class="md-margin md-display-1">
-      Gordon: Master Cooking Assistant
+    <h1 flex class="brand md-margin md-display-1">
+      GourMate
     </h1>
+    <md-button class="md-icon-button" ng-click="ctrl.showGraph($event)">
+      <md-icon>visibility</md-icon>
+    </md-button>
     <md-icon ng-show="ctrl.recorderService.isRecording">mic</md-icon>
     <md-icon ng-hide="ctrl.recorderService.isRecording">mic_off</md-icon>
   </md-toolbar>
@@ -50,6 +53,8 @@
 <script src="bower_components/angular-material/angular-material.js"></script>
 <script src="bower_components/ui-router/release/angular-ui-router.min.js"></script>
 <script src="bower_components/nlp_compromise/client_side/nlp.js"></script>
+<script src="bower_components/d3/d3.min.js"></script>
+<script src="bower_components/moment/min/moment.min.js"></script>
 
 <script src="src/app.js"></script>
 <script src="src/boot.js"></script>
@@ -66,5 +71,7 @@
 <script src="src/recipes/CurrentRecipeService.js"></script>
 <script src="src/timers/TimerService.js"></script>
 <script src="src/audioplayer.js"></script>
+<script src="src/tempgraph.js"></script>
+<script src="src/TemperatureService.js"></script>
 </body>
 </html>

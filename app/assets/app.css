@@ -38,3 +38,32 @@ md-toolbar {
 .voice-notice {
   margin-left: 14px;
 }
+
+/* Charts */
+path.line {
+  fill: none;
+  stroke: #FF5722;
+  stroke-width: 2px;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: black;
+  shape-rendering: crispEdges;
+}
+
+.axis text {
+  font: 13px 'Roboto', sans-serif;
+}
+
+@font-face {
+  font-family: MJFZhafira;
+  src: url(zhafira.ttf);
+  font-weight: bold;
+}
+
+.brand {
+  font-family: MJFZhafira, sans-serif;
+  text-align: center;
+}
