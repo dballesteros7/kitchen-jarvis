@@ -1,0 +1,16 @@
+<md-list flex layout="column" layout-align="start center" class="recipe-list">
+  <md-list-item class="recipe-list-item" ng-repeat="recipe in ctrl.recipes">
+    <md-card flex class="md-whiteframe-z2">
+      <img class="md-card-image" alt="Recipe photo" ng-src="{{recipe.ImageURL}}">
+      <md-card-content>
+        <h2 class="md-title">{{recipe.Title}}</h2>
+        <p class="md-body-1">
+          {{recipe.Description}}
+        </p>
+      </md-card-content>
+      <div class="md-actions" layout="row" layout-align="end center">
+        <md-button class="md-primary" ui-sref="recipeView({recipeId: '{{recipe.RecipeID}}'})">View Recipe</md-button>
+      </div>
+    </md-card>
+  </md-list-item>
+</md-list>

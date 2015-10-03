@@ -1,0 +1,35 @@
+html, body {
+  font-family: 'Roboto', sans-serif;
+  font-size:14px;
+  height:100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+md-toolbar {
+  min-height: initial;
+}
+
+.align-self-center {
+  align-self: center;
+}
+
+/* Recipe list */
+
+.recipe-list .recipe-list-item {
+  width: 40%;
+}
+
+.recipe-view {
+  width: 50%;
+}
+
+.recipe-avatar {
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+}
+
+.no-margin {
+  margin: 0;
+}

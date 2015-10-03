@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Gordon: Master Cooking Assistant</title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no"/>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="bower_components/angular-material/angular-material.css"/>
+  <link rel="stylesheet" href="assets/app.css"/>
+
+  <style type="text/css">
+    /**
+     * Hide when Angular is not yet loaded and initialized
+     */
+    [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+      display: none !important;
+    }
+  </style>
+
+</head>
+
+<body ng-app="kjApp" layout="row" ng-controller="MainAppController as ctrl" ng-cloak>
+<audio-player></audio-player>
+<ng-include src="'src/sidebar/views/sidebar.html'"></ng-include>
+
+<div flex layout="column" class="md-whiteframe-z2">
+  <md-toolbar layout="row" layout-align="start center" class="md-whiteframe-z1">
+    <md-button class="md-margin menu" ng-click="ctrl.toggleLeftSidenav()">
+      <md-icon>menu</md-icon>
+    </md-button>
+    <h1 flex class="md-margin md-display-1">
+      Gordon: Master Cooking Assistant
+    </h1>
+    <md-icon ng-show="ctrl.recorderService.isRecording">mic</md-icon>
+    <md-icon ng-hide="ctrl.recorderService.isRecording">mic_off</md-icon>
+  </md-toolbar>
+  <md-content class="md-padding" flex ui-view>
+  </md-content>
+</div>
+
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-aria/angular-aria.js"></script>
+<script src="bower_components/angular-material/angular-material.js"></script>
+<script src="bower_components/ui-router/release/angular-ui-router.min.js"></script>
+<script src="bower_components/nlp_compromise/client_side/nlp.js"></script>
+
+<script src="src/app.js"></script>
+<script src="src/boot.js"></script>
+<script src="src/states.js"></script>
+<script src="src/MainAppController.js"></script>
+<script src="src/sidebar/SidebarController.js"></script>
+<script src="src/rec/Recorder.js"></script>
+<script src="src/recipes/RecipeListController.js"></script>
+<script src="src/recipes/RecipeService.js"></script>
+<script src="src/recipes/RecipeController.js"></script>
+<script src="src/LocalStorageService.js"></script>
+<script src="src/rec/VoiceService.js"></script>
+<script src="src/rec/TokenManager.js"></script>
+<script src="src/recipes/CurrentRecipeService.js"></script>
+<script src="src/timers/TimerService.js"></script>
+<script src="src/audioplayer.js"></script>
+</body>
+</html>

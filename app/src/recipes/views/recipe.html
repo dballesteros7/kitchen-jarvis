@@ -1,0 +1,26 @@
+<div layout="column" layout-align="start center">
+  <div layout="column" class="recipe-view md-whiteframe-z2 md-padding">
+    <div layout="row" layout-align="start center">
+      <h3 flex class="md-headline">
+        {{ctrl.recipe.Title}}
+        <span class="md-caption">By {{ctrl.recipe.Poster.UserName}}</span>
+      </h3>
+      <md-button class="md-raised md-primary" ng-click="ctrl.startRecipe()" ng-hide="ctrl.isStarted()">
+        Start recipe
+      </md-button>
+      <md-button class="md-raised md-accent" ng-click="ctrl.finishRecipe()" ng-show="ctrl.isStarted()">
+        Recipe finished
+      </md-button>
+    </div>
+    <h4 class="md-title">Ingredients</h4>
+    <md-list>
+      <md-list-item layout="row" ng-repeat="ingredient in ctrl.recipe.Ingredients">
+        <p class="md-body-2" flex="33" ng-show="ingredient.Unit">{{ingredient.Quantity}} {{ingredient.Unit}}</p>
+        <p class="md-body-2" flex="33" ng-hide="ingredient.Unit"></p>
+        <p>{{ingredient.Name}}</p>
+      </md-list-item>
+    </md-list>
+    <h4 class="md-title">Instructions</h4>
+    <p>{{ctrl.recipe.Instructions}}</p>
+  </div>
+</div>
