@@ -1,5 +1,5 @@
 {
-  "firebase": "kitchenjarvis",
+  "firebase": "gourmate",
   "public": "app",
   "ignore": [
     "firebase.json",

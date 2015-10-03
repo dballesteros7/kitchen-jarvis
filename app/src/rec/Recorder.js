@@ -11,7 +11,7 @@
     this.rec = new webkitSpeechRecognition();
     this.rec.continuous = true;
     this.rec.interimResults = true;
-
+    this.rec.lang = 'en-US';
     this.rec.onstart = this.onStart.bind(this);
     this.rec.onerror = this.onError.bind(this);
     this.rec.onresult = this.onResult.bind(this);

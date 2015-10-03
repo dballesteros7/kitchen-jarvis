@@ -38,7 +38,7 @@
 
   kj.TemperatureService.prototype.onResult = function(event, detail) {
     var text = detail.text;
-    if (text.toLowerCase().trim() === 'is the oven ready') {
+    if (text.toLowerCase().trim().indexOf('oven') > -1 && text.toLowerCase().trim().indexOf('ready') > -1) {
       event.preventDefault();
       this.$mdDialog_.show({
         controller: 'TemperatureDialogController as ctrl',
