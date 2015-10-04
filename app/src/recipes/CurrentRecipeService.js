@@ -69,7 +69,7 @@
         this.voiceService_.play(response, detail.voiceModel);
       }.bind(this)).catch(function () {
         if (detail.swear) {
-          this.voiceService_.play('I did not understand shit. Speak fucking clear', detail.voiceModel);
+          this.voiceService_.play('I did not understand shit. Speak clearly dammnit!', detail.voiceModel);
         } else {
           this.voiceService_.play('Sorry, I did not understand that.', detail.voiceModel);
         }

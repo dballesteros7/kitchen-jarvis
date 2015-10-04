@@ -90,3 +90,22 @@ path.line {
   width: 192px;
   height: 192px;
 }
+
+.google-signin {
+  background-image: url(/assets/google_signin_buttons/web/1x/btn_google_signin_light_normal_web.png);
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: cover;
+  background-color: white;
+}
+
+.toolbar-avatar {
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  vertical-align: middle;
+}
+
+md-toolbar .md-menu.toolbar-right {
+  margin: 0 24px;
+}

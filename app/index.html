@@ -10,8 +10,7 @@
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="bower_components/angular-material/angular-material.css"/>
+  <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css"/>
   <link rel="stylesheet" href="assets/app.css"/>
 
   <style type="text/css">
@@ -37,21 +36,48 @@
     <h1 flex class="brand center-title md-margin md-display-1">
       GourMate
     </h1>
-    <md-icon ng-show="ctrl.recorderService.isRecording">mic</md-icon>
-    <md-icon ng-hide="ctrl.recorderService.isRecording">mic_off</md-icon>
+    <!--<md-icon ng-show="ctrl.recorderService.isRecording">mic</md-icon>-->
+    <!--<md-icon ng-hide="ctrl.recorderService.isRecording">mic_off</md-icon>-->
+    <md-menu class="toolbar-right" ng-hide="ctrl.getCurrentUser()">
+      <md-button class="md-icon-button" ng-click="$mdOpenMenu($event)">
+        <md-icon>face</md-icon>
+      </md-button>
+      <md-menu-content width="3">
+        <md-menu-item>
+          <md-button ng-click="ctrl.loginWithGoogle()">
+            Sign in with Google
+          </md-button>
+        </md-menu-item>
+      </md-menu-content>
+    </md-menu>
+    <md-menu class="toolbar-right" ng-show="ctrl.getCurrentUser()">
+      <md-button class="md-icon-button" ng-click="$mdOpenMenu($event)">
+        <img class="toolbar-avatar"
+           ng-src="{{ctrl.getCurrentUser().google.profileImageURL}}">
+      </md-button>
+      <md-menu-content width="3">
+        <md-menu-item>
+          <md-button ng-click="ctrl.signOut()">
+            Sign out
+          </md-button>
+        </md-menu-item>
+      </md-menu-content>
+    </md-menu>
   </md-toolbar>
   <md-content flex ui-view layout="column">
   </md-content>
 </div>
 
-<script src="bower_components/angular/angular.js"></script>
-<script src="bower_components/angular-animate/angular-animate.js"></script>
-<script src="bower_components/angular-aria/angular-aria.js"></script>
-<script src="bower_components/angular-material/angular-material.js"></script>
+<script src="bower_components/angular/angular.min.js  "></script>
+<script src="bower_components/angular-animate/angular-animate.min.js"></script>
+<script src="bower_components/angular-aria/angular-aria.min.js"></script>
+<script src="bower_components/angular-material/angular-material.min.js"></script>
 <script src="bower_components/ui-router/release/angular-ui-router.min.js"></script>
-<script src="bower_components/nlp_compromise/client_side/nlp.js"></script>
+<script src="bower_components/nlp_compromise/client_side/nlp.min.js"></script>
 <script src="bower_components/d3/d3.min.js"></script>
 <script src="bower_components/moment/min/moment.min.js"></script>
+<script src="bower_components/firebase/firebase.js"></script>
+<script src="bower_components/angularfire/dist/angularfire.min.js"></script>
 
 <script src="src/app.js"></script>
 <script src="src/boot.js"></script>
@@ -71,5 +97,6 @@
 <script src="src/tempgraph.js"></script>
 <script src="src/TemperatureService.js"></script>
 <script src="src/extras/TechnologyController.js"></script>
+<script src="src/UserService.js"></script>
 </body>
 </html>

@@ -80,12 +80,13 @@
         console.log(result);
         for (var j = 0; j < kj.VoiceService.VOICES.length; j++) {
           var helper = kj.VoiceService.VOICES[j];
-          if (result.startsWith(helper.name.toLowerCase())) {
-            result = result.substring(helper.name.length);
+          var helperIndex = result.indexOf(helper.name.toLowerCase());
+          if (helperIndex > -1) {
+            result = result.substring(helperIndex + helper.name.length);
             this.$scope_.$broadcast('speechResult', {
               text: result,
               voiceModel: helper.value,
-              swear: helper.name === 'Gordon'
+              swear: helper.name === 'Gordon' || helper.name === 'Garden'
             });
             break;
           }
@@ -97,7 +98,7 @@
 
   kj.Recorder.prototype.watchDog = function() {
     var now = Date.now();
-    if (now - this.lastResultTime > 10000) {
+    if (this.enabled_ && now - this.lastResultTime > 10000) {
       console.log('Timed out.');
       this.rec.stop();
     }

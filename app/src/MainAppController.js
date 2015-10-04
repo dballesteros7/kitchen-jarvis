@@ -8,24 +8,30 @@
   window.kj = window.kj || {};
   var kj = window.kj;
 
-  kj.MainAppController = function($state, $mdSidenav, $mdDialog, Recorder, timerService, temperatureService, currentRecipeService) {
+  kj.MainAppController = function($state, $mdSidenav, $mdDialog, Recorder, timerService, temperatureService, currentRecipeService, userService) {
     this.$state_ = $state;
     this.$mdSidenav_ = $mdSidenav;
     this.$mdDialog_ = $mdDialog;
     this.recorderService = Recorder;
+    this.userService_ = userService;
   };
 
   kj.MainAppController.prototype.toggleLeftSidenav = function() {
     this.$mdSidenav_('left').toggle();
   };
 
-  kj.MainAppController.prototype.showGraph  = function(ev) {
-    this.$mdDialog_.show({
-      templateUrl: 'src/graph-dialog.html',
-      parent: angular.element(document.body),
-      targetEvent: ev,
-      clickOutsideToClose:true
-    });
+  kj.MainAppController.prototype.loginWithGoogle = function() {
+    this.userService_.loginWithGoogle();
+  };
+
+  kj.MainAppController.prototype.getCurrentUser = function() {
+    return this.userService_.currentUser;
+  };
+
+  kj.MainAppController.prototype.signOut = function() {
+    if (this.getCurrentUser()) {
+      this.userService_.signOut();
+    }
   };
 
   kj.module.controller('MainAppController', kj.MainAppController);

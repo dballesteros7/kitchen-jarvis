@@ -38,13 +38,17 @@
       detail: 'Web Hosting',
       brandImg: 'assets/firebase.png'
     }, {
+      name: 'BigOven',
+      detail: 'Recipe catalog',
+      brandImg: 'assets/bigoven.png'
+    }, {
+      name: 'Flask',
+      detail: 'Application server',
+      brandImg: 'assets/flask.png'
+    }, {
       name: 'HTML5',
       detail: 'Speech Recognition & Web Audio APIs',
       brandImg: 'assets/html5.png'
-    }, {
-      name: 'D3.js',
-      detail: 'Charts for the web',
-      brandImg: 'assets/d3.png'
     }
   ];
 
