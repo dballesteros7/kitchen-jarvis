@@ -4,7 +4,7 @@
       md-gutter-gt-sm="16px" mg-gutter-sm="8px">
     <md-grid-tile md-ink-ripple="#333" class="recipe-tile md-whiteframe-z5" ng-repeat="recipe in ctrl.recipes">
       <a ui-sref="recipeView({recipeId: recipe.RecipeID})">
-        <img alt="Recipe photo" class="tile-image" ng-src="{{recipe.ImageURL}}">
+        <img alt="Recipe photo" class="tile-image" ng-src="assets/{{recipe.RecipeID}}.jpg">
         <md-grid-tile-footer class="footer-grey">
           <h3 class="md-title">{{recipe.Title}}</h3>
         </md-grid-tile-footer>
