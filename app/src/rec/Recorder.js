@@ -11,20 +11,25 @@
     this.rec = new webkitSpeechRecognition();
     this.rec.continuous = true;
     this.rec.interimResults = true;
-    this.rec.lang = 'en-IN';
+    this.rec.lang = 'en-US';
     this.rec.onstart = this.onStart.bind(this);
     this.rec.onerror = this.onError.bind(this);
     this.rec.onresult = this.onResult.bind(this);
     this.rec.onend = this.onEnd.bind(this);
     this.rec.start();
 
-    $window.setInterval(this.watchDog.bind(this), 1000);
+    //$window.setInterval(this.watchDog.bind(this), 1000);
     this.lastResultTime = 0;
     this.result = '';
     this.$scope_ = $rootScope;
     this.enabled_ = true;
     this.isRecording = false;
     this.$mdToast_ = $mdToast;
+    this.voiceStatus = {
+      listening: 'Inactive',
+      lastResult: '',
+      guess: ''
+    };
   };
 
   Object.defineProperty(kj.Recorder.prototype, 'enabled', {
@@ -42,18 +47,13 @@
   });
 
   kj.Recorder.prototype.showMessage = function(message) {
-    this.$mdToast_.show(
-        this.$mdToast_.simple()
-            .content(message)
-            .position('bottom right')
-            .hideDelay(50000)
-    );
+    console.log(message);
   };
 
   kj.Recorder.prototype.onStart = function(event) {
     console.log('Started listening.');
     console.log(event);
-    this.showMessage('Now listening...');
+    this.voiceStatus.listening = 'Listening started.'
     this.lastResultTime = Date.now();
     this.isRecording = true;
     this.$scope_.$apply();
@@ -63,7 +63,7 @@
     console.log('Listening ended.');
     console.log(event);
     this.isRecording = false;
-    this.showMessage('Stopped listening.');
+    this.voiceStatus.listening = 'Listening ended.';
     if (this.enabled_) {
       this.rec.start();
     }
@@ -75,9 +75,9 @@
     console.log(event);
     if (event.error === 'aborted') {
       this.enabled_ = false;
-      this.showMessage('Disabling because the microphone is busy.');
+      this.voiceStatus.listening = 'Aborted because the microphone is busy.';
     } else {
-      this.showMessage('Found error while recording, restarting...');
+      this.voiceStatus.listening = 'Found an error while listening, ' + event.error + '. Restarting now.';
     }
     this.rec.stop();
   };
@@ -88,13 +88,14 @@
     console.log(Date.now());
     var found = false;
     this.lastResultTime = Date.now();
+    this.voiceStatus.guess = '';
     for (var i = event.resultIndex; i < event.results.length; i++) {
       if (event.results[i].isFinal) {
         var result = event.results[i][0].transcript;
         result = result.trim().toLowerCase();
         console.log('Checking result...');
         console.log(result);
-        this.showMessage('Detected speech: ' + result + '.Still listening...');
+        this.voiceStatus.lastResult = result;
         found = true;
         for (var j = 0; j < kj.VoiceService.VOICES.length; j++) {
           var helper = kj.VoiceService.VOICES[j];
@@ -109,10 +110,9 @@
             break;
           }
         }
+      } else {
+        this.voiceStatus.guess += event.results[i][0].transcript;
       }
-    }
-    if (!found) {
-      this.showMessage('Listening...');
     }
     this.$scope_.$apply();
   };

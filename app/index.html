@@ -64,6 +64,11 @@
       </md-menu-content>
     </md-menu>
   </md-toolbar>
+  <md-subheader>
+    <span class="md-subhead">Voice recognition status: <b>{{ctrl.getStatus().listening}}</b></span>
+    <span class="md-subhead">Last detected speech: <b>{{ctrl.getStatus().lastResult}}</b></span>
+    <span class="md-subhead">Current speech guess: <b>{{ctrl.getStatus().guess  }}</b></span>
+  </md-subheader>
   <md-content flex ui-view layout="column">
   </md-content>
 </div>

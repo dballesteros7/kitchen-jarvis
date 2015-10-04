@@ -28,6 +28,10 @@
     return this.userService_.currentUser;
   };
 
+  kj.MainAppController.prototype.getStatus = function() {
+    return this.recorderService.voiceStatus;
+  };
+
   kj.MainAppController.prototype.signOut = function() {
     if (this.getCurrentUser()) {
       this.userService_.signOut();
