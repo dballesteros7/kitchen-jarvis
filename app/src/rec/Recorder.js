@@ -111,6 +111,9 @@
         }
       }
     }
+    if (!found) {
+      this.showMessage('Listening...');
+    }
     this.$scope_.$apply();
   };
 
