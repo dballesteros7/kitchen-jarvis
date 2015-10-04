@@ -15,12 +15,12 @@
     this.token_ = null;
   };
 
-  kj.TokenManager.TTL = 3600000; // 1 hour
+  kj.TokenManager.TTL = 1800000; // 0.5 hour
 
   kj.TokenManager.prototype.getToken = function() {
     if (this.token_) {
       var now = Date.now();
-      if (now - this.token_.startTime > kj.TokenManager.TTL) {
+      if ((now - this.token_.startTime) > kj.TokenManager.TTL) {
         return this.requestToken_();
       }
       return this.$q_.when(this.token_.encodedToken);
