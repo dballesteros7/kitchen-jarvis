@@ -115,6 +115,9 @@
       }
     }
     this.$scope_.$apply();
+    if (found) {
+      this.rec.stop();
+    }
   };
 
   kj.Recorder.prototype.watchDog = function() {
