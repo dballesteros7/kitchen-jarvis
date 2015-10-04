@@ -32,10 +32,24 @@
       }]
     }
   };
+  kj.states.teamView = {
+    name: 'teamView',
+    url: '/team',
+    templateUrl: 'src/extras/team.html'
+  };
+  kj.states.technologyView = {
+    name: 'technologyView',
+    url: '/stack',
+    templateUrl: 'src/extras/technology.html',
+    controller: 'TechnologyController',
+    controllerAs: 'ctrl'
+  };
 
   kj.module.config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/recipes');
     $stateProvider.state(kj.states.recipeList);
     $stateProvider.state(kj.states.recipeView);
+    $stateProvider.state(kj.states.teamView);
+    $stateProvider.state(kj.states.technologyView);
   });
 })();

@@ -34,16 +34,13 @@
     <md-button class="md-margin menu" ng-click="ctrl.toggleLeftSidenav()">
       <md-icon>menu</md-icon>
     </md-button>
-    <h1 flex class="brand md-margin md-display-1">
+    <h1 flex class="brand center-title md-margin md-display-1">
       GourMate
     </h1>
-    <md-button class="md-icon-button" ng-click="ctrl.showGraph($event)">
-      <md-icon>visibility</md-icon>
-    </md-button>
     <md-icon ng-show="ctrl.recorderService.isRecording">mic</md-icon>
     <md-icon ng-hide="ctrl.recorderService.isRecording">mic_off</md-icon>
   </md-toolbar>
-  <md-content class="md-padding" flex ui-view>
+  <md-content flex ui-view layout="column">
   </md-content>
 </div>
 
@@ -73,5 +70,6 @@
 <script src="src/audioplayer.js"></script>
 <script src="src/tempgraph.js"></script>
 <script src="src/TemperatureService.js"></script>
+<script src="src/extras/TechnologyController.js"></script>
 </body>
 </html>

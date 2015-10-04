@@ -1,26 +1,26 @@
-<div layout="column" layout-align="start center">
-  <div layout="column" class="recipe-view md-whiteframe-z4 md-padding">
-    <div layout="row" layout-align="start center">
-      <h3 flex class="md-headline" layout="column">
-        <span>{{ctrl.recipe.Title}}</span>
-        <span class="md-caption">By {{ctrl.recipe.Poster.UserName}}</span>
-      </h3>
-      <md-button class="md-accent" ng-click="ctrl.startRecipe()" ng-hide="ctrl.isStarted()">
-        Select recipe for voice assistance
-      </md-button>
-      <md-button class="md-warn" ng-click="ctrl.finishRecipe()" ng-show="ctrl.isStarted()">
-        Disable voice assistance
-      </md-button>
+<div flex class="recipe-main-view" layout="column" layout-align="start center">
+    <div layout="column" class="recipe-view md-whiteframe-z5 md-padding md-margin">
+      <div layout="row" layout-align="start center">
+        <h3 flex class="md-headline" layout="column">
+          <span>{{ctrl.recipe.Title}}</span>
+          <span class="md-caption">By {{ctrl.recipe.Poster.UserName}}</span>
+        </h3>
+        <md-button class="md-accent" ng-click="ctrl.startRecipe()" ng-hide="ctrl.isStarted()">
+          Select recipe for voice assistance
+        </md-button>
+        <md-button class="md-warn" ng-click="ctrl.finishRecipe()" ng-show="ctrl.isStarted()">
+          Disable voice assistance
+        </md-button>
+      </div>
+      <h4 class="md-title">Ingredients</h4>
+      <md-list>
+        <md-list-item layout="row" ng-repeat="ingredient in ctrl.recipe.Ingredients">
+          <p class="md-body-2" flex="33" ng-show="ingredient.Unit">{{ingredient.Quantity}} {{ingredient.Unit}}</p>
+          <p class="md-body-2" flex="33" ng-hide="ingredient.Unit"></p>
+          <p>{{ingredient.Name}}</p>
+        </md-list-item>
+      </md-list>
+      <h4 class="md-title">Instructions</h4>
+      <p>{{ctrl.recipe.Instructions}}</p>
     </div>
-    <h4 class="md-title">Ingredients</h4>
-    <md-list>
-      <md-list-item layout="row" ng-repeat="ingredient in ctrl.recipe.Ingredients">
-        <p class="md-body-2" flex="33" ng-show="ingredient.Unit">{{ingredient.Quantity}} {{ingredient.Unit}}</p>
-        <p class="md-body-2" flex="33" ng-hide="ingredient.Unit"></p>
-        <p>{{ingredient.Name}}</p>
-      </md-list-item>
-    </md-list>
-    <h4 class="md-title">Instructions</h4>
-    <p>{{ctrl.recipe.Instructions}}</p>
-  </div>
 </div>

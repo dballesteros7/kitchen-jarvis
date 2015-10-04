@@ -61,6 +61,9 @@
   kj.Recorder.prototype.onError = function(event) {
     console.log('Oops, an error.');
     console.log(event);
+    if (event.error === 'aborted') {
+      this.enabled_ = false;
+    }
     this.rec.stop();
   };
 

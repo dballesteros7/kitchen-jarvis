@@ -19,6 +19,7 @@ md-toolbar {
 
 .recipe-view {
   width: 50%;
+  background: white;
 }
 
 .recipe-avatar {
@@ -65,5 +66,27 @@ path.line {
 
 .brand {
   font-family: MJFZhafira, sans-serif;
+}
+
+
+.center-title {
   text-align: center;
+}
+
+.recipe-main-view {
+  background-image: url(/assets/background.jpg);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.footer-grey {
+  background: rgba(0, 0, 0, .54);
+}
+
+.team-avatar {
+  border-radius: 50%;
+  width: 192px;
+  height: 192px;
 }
