@@ -22,23 +22,11 @@
   kj.TimerService.prototype.startTimer = function(reminder, duration, voiceModel) {
     this.reminders_.push(reminder);
     this.$window_.setTimeout(this.onTimerDone.bind(this), duration, reminder, voiceModel);
-    this.$mdToast_.show(
-        this.$mdToast_.simple()
-            .content('Reminder created.')
-            .position('bottom left')
-            .hideDelay(5000)
-    );
     this.voiceService_.play('I will remind you.', voiceModel);
   };
 
   kj.TimerService.prototype.onTimerDone = function(reminder, voiceModel) {
     console.log(reminder);
-    this.$mdToast_.show(
-        this.$mdToast_.simple()
-            .content(reminder)
-            .position('bottom left')
-            .hideDelay(5000)
-    );
     this.voiceService_.play('Remember to ' + reminder, voiceModel);
   };
 

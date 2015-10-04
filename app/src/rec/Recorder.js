@@ -7,11 +7,11 @@
   window.kj = window.kj || {};
   var kj = window.kj;
 
-  kj.Recorder = function($window, $rootScope, $document) {
+  kj.Recorder = function($window, $rootScope, $document, $mdToast) {
     this.rec = new webkitSpeechRecognition();
     this.rec.continuous = true;
     this.rec.interimResults = true;
-    this.rec.lang = 'en-US';
+    this.rec.lang = 'en-IN';
     this.rec.onstart = this.onStart.bind(this);
     this.rec.onerror = this.onError.bind(this);
     this.rec.onresult = this.onResult.bind(this);
@@ -24,6 +24,7 @@
     this.$scope_ = $rootScope;
     this.enabled_ = true;
     this.isRecording = false;
+    this.$mdToast_ = $mdToast;
   };
 
   Object.defineProperty(kj.Recorder.prototype, 'enabled', {
@@ -40,9 +41,19 @@
     }
   });
 
+  kj.Recorder.prototype.showMessage = function(message) {
+    this.$mdToast_.show(
+        this.$mdToast_.simple()
+            .content(message)
+            .position('bottom right')
+            .hideDelay(50000)
+    );
+  };
+
   kj.Recorder.prototype.onStart = function(event) {
     console.log('Started listening.');
     console.log(event);
+    this.showMessage('Now listening...');
     this.lastResultTime = Date.now();
     this.isRecording = true;
     this.$scope_.$apply();
@@ -52,6 +63,7 @@
     console.log('Listening ended.');
     console.log(event);
     this.isRecording = false;
+    this.showMessage('Stopped listening.');
     if (this.enabled_) {
       this.rec.start();
     }
@@ -63,6 +75,9 @@
     console.log(event);
     if (event.error === 'aborted') {
       this.enabled_ = false;
+      this.showMessage('Disabling because the microphone is busy.');
+    } else {
+      this.showMessage('Found error while recording, restarting...');
     }
     this.rec.stop();
   };
@@ -71,6 +86,7 @@
     console.log('Received a result.');
     console.log(event);
     console.log(Date.now());
+    var found = false;
     this.lastResultTime = Date.now();
     for (var i = event.resultIndex; i < event.results.length; i++) {
       if (event.results[i].isFinal) {
@@ -78,6 +94,8 @@
         result = result.trim().toLowerCase();
         console.log('Checking result...');
         console.log(result);
+        this.showMessage('Detected speech: ' + result + '.Still listening...');
+        found = true;
         for (var j = 0; j < kj.VoiceService.VOICES.length; j++) {
           var helper = kj.VoiceService.VOICES[j];
           var helperIndex = result.indexOf(helper.name.toLowerCase());
