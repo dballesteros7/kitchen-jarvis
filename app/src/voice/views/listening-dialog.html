@@ -1,0 +1,17 @@
+<md-dialog>
+  <md-dialog-content>
+    <div layout="column" layout-align="start center">
+      <img class="responsive-img" ng-src="{{ vm.mateImage }}">
+      <h2 class="md-title" ng-hide="vm.transcript">Listening...</h2>
+      <h2 class="md-title" ng-show="vm.processing">
+        Searching...
+      </h2>
+      <h2 class="md-title" ng-class="{'secondary-text': !vm.isFinal}">
+        {{ vm.transcript }}
+      </h2>
+      <audio-player src="/assets/listening.wav"
+          on-audio-ended="vm.onAudioEnded">
+      </audio-player>
+    </div>
+  </md-dialog-content>
+</md-dialog>

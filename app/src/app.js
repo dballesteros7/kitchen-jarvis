@@ -8,7 +8,7 @@
   var kj = window.kj;
 
   kj.module = angular
-      .module('kjApp', ['ngMaterial', 'ui.router', 'firebase'])
+      .module('kjApp', ['ngMaterial', 'ui.router', 'firebase', 'ngSanitize'])
           .constant('backend', 'https://rec3po.cloudapp.net')
           .constant('firebase', 'https://gourmate.firebaseio.com')
           .config(function($mdThemingProvider) {

@@ -8,12 +8,12 @@
   window.kj = window.kj || {};
   var kj = window.kj;
 
-  kj.CurrentRecipeService = function ($window, $rootScope, $q, recipeService, voiceService) {
+  kj.CurrentRecipeService = function ($window, $rootScope, $q, recipeService, speechSynthesisService) {
     this.localStorage_ = $window.localStorage;
     this.$rootScope_ = $rootScope;
     this.$q_ = $q;
     this.recipeService_ = recipeService;
-    this.voiceService_ = voiceService;
+    this.voiceService_ = speechSynthesisService;
     this.recipe = null;
     this.recipeStarted = null;
 

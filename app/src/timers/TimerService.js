@@ -8,11 +8,11 @@
   window.kj = window.kj || {};
   var kj = window.kj;
 
-  kj.TimerService = function($window, $rootScope, $mdToast, voiceService) {
+  kj.TimerService = function($window, $rootScope, $mdToast, speechSynthesisService) {
     this.$window_ = $window;
     this.$rootScope_ = $rootScope;
     this.$mdToast_ = $mdToast;
-    this.voiceService_ = voiceService;
+    this.voiceService_ = speechSynthesisService;
     this.reminders_ = [];
 
     console.log('Reminders enabled');

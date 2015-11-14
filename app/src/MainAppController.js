@@ -8,11 +8,10 @@
   window.kj = window.kj || {};
   var kj = window.kj;
 
-  kj.MainAppController = function($state, $mdSidenav, $mdDialog, Recorder, timerService, temperatureService, currentRecipeService, userService) {
+  kj.MainAppController = function($state, $mdSidenav, $mdDialog, timerService, temperatureService, currentRecipeService, userService, voiceControlService) {
     this.$state_ = $state;
     this.$mdSidenav_ = $mdSidenav;
     this.$mdDialog_ = $mdDialog;
-    this.recorderService = Recorder;
     this.userService_ = userService;
   };
 
@@ -29,7 +28,7 @@
   };
 
   kj.MainAppController.prototype.getStatus = function() {
-    return this.recorderService.voiceStatus;
+    return {};
   };
 
   kj.MainAppController.prototype.signOut = function() {

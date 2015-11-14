@@ -11,14 +11,9 @@
   kj.states.recipeList = {
     name: 'recipeList',
     url: '/recipes',
-    templateUrl: 'src/recipes/views/recipes.html',
+    templateUrl: 'src/recipes/views/recipe-list.html',
     controller: 'RecipeListController',
-    controllerAs: 'ctrl',
-    resolve: {
-      recipes: ['recipeService', function(recipeService) {
-        return recipeService.getRecipeList();
-      }]
-    }
+    controllerAs: 'vm'
   };
   kj.states.recipeView = {
     name: 'recipeView',

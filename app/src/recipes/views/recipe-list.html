@@ -1,0 +1,62 @@
+<md-subheader>
+  <div layout="row">
+    <div flex>
+      <md-input-container flex class="md-icon-float">
+        <label>Search recipes...</label>
+        <md-icon>search</md-icon>
+        <input ng-model="vm.searchText" ng-keyup="vm.onSearchKeyUp($event)">
+      </md-input-container>
+      <md-chips md-autocomplete-snap md-require-match="true"
+                ng-model="vm.selectedFilters">
+        <md-autocomplete
+            md-selected-item="vm.selectedFilterItem"
+            md-search-text="vm.filterSearchText"
+            md-items="item in vm.getFilterMatches()"
+            md-item-text="item.description"
+            placeholder="+Add filters">
+          <md-item-template>
+            <span>{{item.type}}: {{item.description}}</span>
+          </md-item-template>
+          <md-not-found>
+            No matches found.
+          </md-not-found>
+        </md-autocomplete>
+        <md-chip-template>
+          <span>{{$chip.description}} ({{$chip.type}})</span>
+        </md-chip-template>
+      </md-chips>
+    </div>
+    <md-button ng-click="vm.searchRecipes()">Search</md-button>
+  </div>
+</md-subheader>
+<div class="md-padding">
+  <div ng-hide="vm.recipesReady">
+    <md-progress-linear md-mode="query"></md-progress-linear>
+    <span class="md-caption">Searching...</span>
+  </div>
+  <div layout="column" ng-show="vm.recipesReady && !vm.recipesEmpty">
+    <md-grid-list
+        md-cols="6" md-row-height="2.95:2" md-gutter="16px">
+      <md-grid-tile md-ink-ripple="#333" class="recipe-tile md-whiteframe-z5"
+          ng-repeat="recipe in vm.recipes">
+        <a ui-sref="recipeView({recipeId: recipe.id})">
+          <div flex layout="column">
+              <img alt="{{ recipe.recipeName }}" class="tile-image"
+                  ng-src="{{ recipe.smallImageUrls[0] }}">
+            <md-grid-tile-footer class="recipe-tile-footer" layout-padding>
+              <p>{{recipe.recipeName}}</p>
+              <span class="md-caption">{{ recipe.sourceDisplayName }}</span>
+            </md-grid-tile-footer>
+        </a>
+        </div>
+      </md-grid-tile>
+    </md-grid-list>
+    <p class="md-caption yummly-attribution" ng-bind-html="vm.attribution"></p>
+  </div>
+  <div ng-show="vm.recipesEmpty" layout="column" layout-align="center center">
+    <md-icon class="big-icon">search</md-icon>
+    <p>
+      Sorry, no results were found. Try a different search.
+    </p>
+  </div>
+</div>

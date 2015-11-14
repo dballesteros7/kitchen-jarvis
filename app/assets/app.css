@@ -32,10 +32,6 @@ md-toolbar {
   margin: 0;
 }
 
-.tile-image {
-  width: 100%;
-}
-
 .voice-notice {
   margin-left: 14px;
 }
@@ -81,10 +77,6 @@ path.line {
   background-size: cover;
 }
 
-.footer-grey {
-  background: rgba(0, 0, 0, .54);
-}
-
 .team-avatar {
   border-radius: 50%;
   width: 192px;
@@ -108,4 +100,30 @@ path.line {
 
 md-toolbar .md-menu.toolbar-right {
   margin: 0 24px;
+}
+
+.responsive-img {
+  width: 100%;
+}
+
+.secondary-text {
+  color: rgba(0, 0, 0, .54);
+}
+
+.recipe-tile-footer {
+  background: rgba(0, 0, 0, .54);
+  height: 96px;
+}
+.tile-image {
+  width: 100%;
+}
+
+.big-icon {
+  font-size: 48px;
+  height: 48px;
+  width: 48px;
+}
+
+.yummly-attribution {
+  align-self: flex-end;
 }

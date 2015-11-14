@@ -1,15 +1,12 @@
 <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2"
             md-component-id="left">
-  <!--<md-toolbar class="md-padding md-whiteframe-z1">-->
-    <!--<h1 class="md-display-1">What the f*** you looking at?</h1>-->
-  <!--</md-toolbar>-->
   <md-list ng-controller="SidebarController as ctrl">
     <md-list-item>
       <h4 class="md-title">Navigate</h4>
     </md-list-item>
     <md-list-item ng-click="ctrl.navigateTo('recipeList')">
-      <md-icon class="md-primary">view_list</md-icon>
-      <p>View recipes</p>
+      <md-icon class="md-primary">search</md-icon>
+      <p>Search recipes</p>
     </md-list-item>
     <md-list-item ng-click="ctrl.goToCurrentRecipe()" ng-disabled="!ctrl.hasCurrentRecipe()">
       <md-icon class="md-primary">bookmark</md-icon>

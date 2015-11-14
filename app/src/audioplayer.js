@@ -9,41 +9,47 @@
   var kj = window.kj;
 
 
-  kj.module.directive('audioPlayer', function($document) {
+  kj.module.directive('audioPlayer', audioPlayer);
+
+  function audioPlayer() {
     return {
       restrict: 'E',
       template: '<audio id="player"></audio>',
       scope: {
-
+        src: '@',
+        onAudioEnded: '='
       },
-      link: function(_, element) {
-        $document = $document[0];
+      link: function(scope, element) {
         element = element[0];
         var audioPlayer = element.querySelector('#player');
         var playing = false;
-        var url = null;
-        audioPlayer.addEventListener('ended', function() {
-          playing = false;
-        });
-        audioPlayer.addEventListener('playing', function() {
-          playing = true;
-        });
-        audioPlayer.onload = function() {
-          URL.revokeObjectURL(url);
-        };
-        function playAudio(event) {
-          console.log('Time to play');
-          url = URL.createObjectURL(event.detail.audioBlob);
-          if (!playing) {
-            audioPlayer.src = url;
-            audioPlayer.load();
-            audioPlayer.play();
-          } else {
-            console.log('Something was playing!');
-          }
+
+        activate();
+
+        function activate() {
+          audioPlayer.addEventListener('ended', function() {
+            playing = false;
+            scope.onAudioEnded();
+          });
+          audioPlayer.addEventListener('playing', function() {
+            playing = true;
+          });
+          playAudio();
         }
-        $document.addEventListener('audioAvailable', playAudio);
+        function playAudio() {
+          if (!scope.src) {
+            console.log('Nothing to play.');
+            return;
+          }
+          if (playing) {
+            console.log('Something is already playing.');
+            return;
+          }
+          audioPlayer.src = scope.src;
+          audioPlayer.load();
+          audioPlayer.play();
+        }
       }
     }
-  })
+  }
 })();

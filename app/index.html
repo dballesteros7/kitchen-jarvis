@@ -25,7 +25,6 @@
 </head>
 
 <body ng-app="kjApp" layout="row" ng-controller="MainAppController as ctrl" ng-cloak>
-<audio-player></audio-player>
 <ng-include src="'src/sidebar/views/sidebar.html'"></ng-include>
 
 <div flex layout="column" class="md-whiteframe-z2">
@@ -36,8 +35,6 @@
     <h1 flex class="brand center-title md-margin md-display-1">
       GourMate
     </h1>
-    <!--<md-icon ng-show="ctrl.recorderService.isRecording">mic</md-icon>-->
-    <!--<md-icon ng-hide="ctrl.recorderService.isRecording">mic_off</md-icon>-->
     <md-menu class="toolbar-right" ng-hide="ctrl.getCurrentUser()">
       <md-button class="md-icon-button" ng-click="$mdOpenMenu($event)">
         <md-icon>face</md-icon>
@@ -64,11 +61,6 @@
       </md-menu-content>
     </md-menu>
   </md-toolbar>
-  <md-subheader>
-    <span class="md-subhead">Voice recognition status: <b>{{ctrl.getStatus().listening}}</b></span>
-    <span class="md-subhead">Last detected speech: <b>{{ctrl.getStatus().lastResult}}</b></span>
-    <span class="md-subhead">Current speech guess: <b>{{ctrl.getStatus().guess  }}</b></span>
-  </md-subheader>
   <md-content flex ui-view layout="column">
   </md-content>
 </div>
@@ -83,19 +75,22 @@
 <script src="bower_components/moment/min/moment.min.js"></script>
 <script src="bower_components/firebase/firebase.js"></script>
 <script src="bower_components/angularfire/dist/angularfire.min.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
 
 <script src="src/app.js"></script>
 <script src="src/boot.js"></script>
 <script src="src/states.js"></script>
+<script src="src/credentials.js"></script>
 <script src="src/MainAppController.js"></script>
 <script src="src/sidebar/SidebarController.js"></script>
-<script src="src/rec/Recorder.js"></script>
-<script src="src/recipes/RecipeListController.js"></script>
-<script src="src/recipes/RecipeService.js"></script>
+<script src="src/speech/speech-recognition.service.js"></script>
+<script src="src/speech/speech-synthesis.service.js"></script>
+<script src="src/voice/voice-control.service.js"></script>
+<script src="src/voice/voice-control.controller.js"></script>
+<script src="src/recipes/recipe-list.controller.js"></script>
+<script src="src/recipes/recipe.service.js"></script>
 <script src="src/recipes/RecipeController.js"></script>
 <script src="src/LocalStorageService.js"></script>
-<script src="src/rec/VoiceService.js"></script>
-<script src="src/rec/TokenManager.js"></script>
 <script src="src/recipes/CurrentRecipeService.js"></script>
 <script src="src/timers/TimerService.js"></script>
 <script src="src/audioplayer.js"></script>

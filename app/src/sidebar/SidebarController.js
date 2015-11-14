@@ -8,15 +8,13 @@
   window.kj = window.kj || {};
   var kj = window.kj;
 
-  kj.SidebarController = function($window, $state, $mdSidenav, recipeService, Recorder, currentRecipeService, voiceService) {
+  kj.SidebarController = function($window, $state, $mdSidenav, recipeService, currentRecipeService) {
     this.$window_ = $window;
     this.$state_ = $state;
     this.$mdSidenav_ = $mdSidenav;
     this.currentRecipe = null;
     this.recipeService = recipeService;
     this.currentRecipeService_ = currentRecipeService;
-    this.recorderService = Recorder;
-    this.voiceService = voiceService;
   };
 
   kj.SidebarController.prototype.navigateTo = function(state) {
