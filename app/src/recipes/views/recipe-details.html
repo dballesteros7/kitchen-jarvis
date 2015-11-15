@@ -1,0 +1,59 @@
+<div flex class="recipe-main-view" layout="column" layout-align="start center">
+    <div layout="column" class="recipe-view md-whiteframe-z5 md-padding md-margin">
+      <div layout="column" class="md-whiteframe-z2">
+        <div layout="row" class="md-padding">
+          <img ng-src="{{ vm.recipe.images[0].hostedLargeUrl }}">
+          <div flex layout="column" class="md-margin">
+            <h3 class="md-headline" layout="column">
+              {{vm.recipe.name}}
+              <span layout="row" layout-align="start center">
+                <span class="md-caption">{{vm.recipe.source.sourceDisplayName}}</span>
+                <md-button target='_blank'
+                           ng-href="{{vm.recipe.source.sourceRecipeUrl}}"
+                           class="md-accent md-icon-button">
+                  <md-icon>open_in_new</md-icon>
+                </md-button>
+              </span>
+            </h3>
+            <md-button ng-click="vm.cookRecipe()"
+                       ng-hide="vm.isCurrentRecipe" class="md-accent">
+              Start cooking
+              <md-tooltip>Allows voice commands</md-tooltip>
+            </md-button>
+            <md-button ng-click="vm.stopCooking()"
+                       ng-show="vm.isCurrentRecipe" class="md-warn">
+              Stop cooking
+              <md-tooltip>Stops voice commands</md-tooltip>
+            </md-button>
+          </div>
+        </div>
+        <md-divider></md-divider>
+        <div layout="row" class="md-padding">
+          <div class="md-margin">
+            <span class="md-body-2">Servings:</span>
+            {{vm.recipe.numberOfServings}}
+          </div>
+          <div class="md-margin" flex>
+            <span class="md-body-2">Prep & cooking time:</span>
+            {{vm.toReadableTime(vm.recipe.totalTimeInSeconds)}}
+          </div>
+          <div class="md-margin">
+            <span class="md-body-2">Rating:</span>
+            <md-icon ng-repeat="star in vm.recipeRating track by $index">
+              star
+            </md-icon>
+          </div>
+        </div>
+      </div>
+      <div class="md-padding">
+        <h4 class="md-title">Ingredients</h4>
+        <md-list>
+          <md-list-item ng-repeat="ingredientLine in vm.recipe.ingredientLines track by $index">
+            <p>{{ingredientLine}}</p>
+          </md-list-item>
+        </md-list>
+      </div>
+      <p class="md-caption yummly-attribution"
+         ng-bind-html="vm.recipe.attribution.html"></p>
+    </div>
+</div>

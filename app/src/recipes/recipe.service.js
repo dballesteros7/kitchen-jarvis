@@ -15,7 +15,8 @@
   function recipeService($http, $q, $window, $filter, yummlyCredentials) {
     var api = {
       searchRecipes: searchRecipes,
-      getFilterMatches: getFilterMatches
+      getFilterMatches: getFilterMatches,
+      getRecipe: getRecipe
     };
 
     var backend = 'https://api.yummly.com/v1/api';
@@ -115,10 +116,18 @@
     }
 
     function getFilterMatches(searchText) {
-      var result = $filter('filter')(searchableMetadata, {
+      return $filter('filter')(searchableMetadata, {
         description: searchText
       });
-      return result;
+    }
+
+    function getRecipe(recipeId) {
+      return $http({
+        url: backend + '/recipe/' + recipeId,
+        headers: headers
+      }).then(function(httpData) {
+        return httpData.data;
+      })
     }
   }
 })();

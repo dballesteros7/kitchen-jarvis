@@ -18,14 +18,9 @@
   kj.states.recipeView = {
     name: 'recipeView',
     url: '/recipes/:recipeId',
-    templateUrl: 'src/recipes/views/recipe.html',
-    controller: 'RecipeController',
-    controllerAs: 'ctrl',
-    resolve: {
-      recipe: ['recipeService', '$stateParams', function(recipeService, $stateParams) {
-        return recipeService.getRecipe($stateParams.recipeId);
-      }]
-    }
+    templateUrl: 'src/recipes/views/recipe-details.html',
+    controller: 'RecipeDetailsController',
+    controllerAs: 'vm'
   };
   kj.states.teamView = {
     name: 'teamView',

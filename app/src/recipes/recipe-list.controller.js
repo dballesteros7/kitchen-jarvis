@@ -40,7 +40,12 @@
     }
 
     function onRecipesResult(recipeData) {
-      vm.recipes = recipeData.matches;
+      vm.recipes = recipeData.matches.map(function(item) {
+        item.smallImageUrls = item.smallImageUrls.map(function(url) {
+          return url.replace('http://', 'https://');
+        });
+        return item;
+      });
       vm.attribution = recipeData.attribution.html;
       vm.recipesReady = true;
       vm.recipesEmpty = vm.recipes.length === 0;

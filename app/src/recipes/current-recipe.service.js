@@ -5,6 +5,41 @@
 (function () {
   'use strict';
 
+  angular.module('kjApp')
+      .service('currentRecipeService', currentRecipeService);
+
+  currentRecipeService.$inject = ['localStorageService'];
+
+  /* @ngInject */
+  function currentRecipeService(localStorageService) {
+    var svc = this;
+    var recipe = null;
+    var recipeKey = 'currentRecipe';
+
+    svc.setRecipe = setRecipe;
+    svc.getRecipe = getRecipe;
+    svc.clearRecipe = clearRecipe;
+
+    activate();
+    // ------------------------------------------------------------------------
+    function activate() {
+      recipe = JSON.parse(localStorageService.getItem(recipeKey));
+    }
+    function setRecipe(newRecipe) {
+      recipe = newRecipe;
+      localStorageService.setItem(recipeKey, JSON.stringify(recipe));
+    }
+
+    function getRecipe() {
+      return recipe;
+    }
+
+    function clearRecipe() {
+      recipe = null;
+      localStorageService.removeItem(recipeKey);
+    }
+  }
+
   window.kj = window.kj || {};
   var kj = window.kj;
 
@@ -85,5 +120,4 @@
     console.log('onResult recipe exit ' + Date.now());
   };
 
-  kj.module.service('currentRecipeService', kj.CurrentRecipeService);
 })();

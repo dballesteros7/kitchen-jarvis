@@ -1,38 +1,39 @@
 <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2"
             md-component-id="left">
-  <md-list ng-controller="SidebarController as ctrl">
+  <md-list ng-controller="SidebarController as vm">
     <md-list-item>
       <h4 class="md-title">Navigate</h4>
     </md-list-item>
-    <md-list-item ng-click="ctrl.navigateTo('recipeList')">
+    <md-list-item ng-click="vm.navigateTo('recipeList')">
       <md-icon class="md-primary">search</md-icon>
       <p>Search recipes</p>
     </md-list-item>
-    <md-list-item ng-click="ctrl.goToCurrentRecipe()" ng-disabled="!ctrl.hasCurrentRecipe()">
+    <md-list-item ng-click="vm.navigateToCurrentRecipe()"
+                  ng-disabled="!vm.getCurrentRecipe()">
       <md-icon class="md-primary">bookmark</md-icon>
       <div flex layout="column">
         <p class="no-margin">Current recipe</p>
         <p class="md-body-2 no-margin">{{ctrl.getCurrentRecipe().Title}}</p>
       </div>
     </md-list-item>
-    <md-divider></md-divider>
-    <md-list-item>
-      <h4 class="md-title">Settings</h4>
-    </md-list-item>
-    <md-list-item>
-      <p ng-hide="ctrl.recorderService.enabled">Enable voice controls</p>
-      <p ng-show="ctrl.recorderService.enabled">Disable voice controls</p>
-      <md-switch ng-model="ctrl.recorderService.enabled"></md-switch>
-    </md-list-item>
+    <!--<md-divider></md-divider>-->
+    <!--<md-list-item>-->
+      <!--<h4 class="md-title">Settings</h4>-->
+    <!--</md-list-item>-->
+    <!--<md-list-item>-->
+      <!--<p ng-hide="ctrl.recorderService.enabled">Enable voice controls</p>-->
+      <!--<p ng-show="ctrl.recorderService.enabled">Disable voice controls</p>-->
+      <!--<md-switch ng-model="ctrl.recorderService.enabled"></md-switch>-->
+    <!--</md-list-item>-->
     <md-divider></md-divider>
     <md-list-item>
       <h4 class="md-title">About</h4>
     </md-list-item>
-    <md-list-item ng-click="ctrl.navigateTo('teamView')">
+    <md-list-item ng-click="vm.navigateTo('teamView')">
       <md-icon class="md-accent">people</md-icon>
       <p>About Us</p>
     </md-list-item>
-    <md-list-item ng-click="ctrl.navigateTo('technologyView')">
+    <md-list-item ng-click="vm.navigateTo('technologyView')">
       <md-icon class="md-accent">build</md-icon>
       <p>Powered By</p>
     </md-list-item>
