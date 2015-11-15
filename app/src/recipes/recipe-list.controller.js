@@ -42,11 +42,12 @@
     function onRecipesResult(recipeData) {
       vm.recipes = recipeData.matches.map(function(item) {
         item.smallImageUrls = item.smallImageUrls.map(function(url) {
-          return url.replace('http://', 'https://');
+          return url.replace(/http:\/\//g, 'https://');
         });
         return item;
       });
       vm.attribution = recipeData.attribution.html;
+      vm.attribution = vm.attribution.replace(/http:\/\//g, 'https://');
       vm.recipesReady = true;
       vm.recipesEmpty = vm.recipes.length === 0;
     }

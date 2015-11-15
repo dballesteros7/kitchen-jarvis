@@ -8,7 +8,7 @@
   window.kj = window.kj || {};
   var kj = window.kj;
 
-  kj.MainAppController = function($state, $mdSidenav, $mdDialog, timerService, temperatureService, currentRecipeService, userService, voiceControlService) {
+  kj.MainAppController = function($state, $mdSidenav, $mdDialog, timerService, temperatureService, currentRecipeService, userService) {
     this.$state_ = $state;
     this.$mdSidenav_ = $mdSidenav;
     this.$mdDialog_ = $mdDialog;

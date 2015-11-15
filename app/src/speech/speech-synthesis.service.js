@@ -30,11 +30,14 @@
       });
     }
 
-    function speak(message) {
+    function speak(message, onEnd) {
       if (voices.length === 0) {
         console.log('No voices loaded.');
       } else if (playing) {
         console.log('Already playing something, dropping current message.');
+        if (onEnd) {
+          onEnd();
+        }
       } else {
         var utterance = new SpeechSynthesisUtterance(message);
         utterance.voice = voices[1];
@@ -46,6 +49,9 @@
       function onMessageEnd() {
         playing = false;
         console.log('Finished speaking utterance.');
+        if (onEnd) {
+          onEnd();
+        }
       }
     }
   }

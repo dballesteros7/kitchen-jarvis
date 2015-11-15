@@ -14,21 +14,9 @@
 
   kj.TechnologyController.PRODUCTS = [
     {
-      name: 'IBM Watson',
-      detail: 'Text to Speech API',
-      brandImg: 'assets/watson.png'
-    }, {
-      name: 'Microsoft Azure',
-      detail: 'Application hosting',
-      brandImg: 'assets/azure.png'
-    }, {
       name: 'Google',
       detail: 'Built for Google Chrome',
       brandImg: 'assets/google.gif'
-    }, {
-      name: 'Particle',
-      detail: 'Photon platform',
-      brandImg: 'assets/particle.png'
     }, {
       name: 'AngularJS',
       detail: 'AngularJS & Angular Material',
@@ -38,21 +26,11 @@
       detail: 'Web Hosting',
       brandImg: 'assets/firebase.png'
     }, {
-      name: 'BigOven',
-      detail: 'Recipe catalog',
-      brandImg: 'assets/bigoven.png'
-    }, {
-      name: 'Flask',
-      detail: 'Application server',
-      brandImg: 'assets/flask.png'
-    }, {
-      name: 'HTML5',
-      detail: 'Speech Recognition & Web Audio APIs',
-      brandImg: 'assets/html5.png'
+      name: 'Yummly',
+      detail: 'Recipe provider',
+      brandImg: 'assets/yummly.png'
     }
   ];
-
-
 
   kj.module.controller('TechnologyController', kj.TechnologyController);
 })();

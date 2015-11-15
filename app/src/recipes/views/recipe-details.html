@@ -2,7 +2,7 @@
     <div layout="column" class="recipe-view md-whiteframe-z5 md-padding md-margin">
       <div layout="column" class="md-whiteframe-z2">
         <div layout="row" class="md-padding">
-          <img ng-src="{{ vm.recipe.images[0].hostedLargeUrl }}">
+          <img ng-src="{{ vm.recipeImage }}">
           <div flex layout="column" class="md-margin">
             <h3 class="md-headline" layout="column">
               {{vm.recipe.name}}
@@ -54,6 +54,6 @@
         </md-list>
       </div>
       <p class="md-caption yummly-attribution"
-         ng-bind-html="vm.recipe.attribution.html"></p>
+         ng-bind-html="vm.attribution"></p>
     </div>
 </div>

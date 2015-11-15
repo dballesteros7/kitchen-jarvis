@@ -8,10 +8,11 @@
   angular.module('kjApp')
       .controller('RecipeDetailsController', RecipeDetailsController);
 
-  RecipeDetailsController.$inject = ['$stateParams', 'recipeService', 'currentRecipeService'];
+  RecipeDetailsController.$inject = ['$stateParams', 'recipeService', 'currentRecipeService', 'voiceControlService'];
 
   /* @ngInject */
-  function RecipeDetailsController($stateParams, recipeService, currentRecipeService) {
+  function RecipeDetailsController($stateParams, recipeService,
+                                   currentRecipeService, voiceControlService) {
     var vm = this;
     vm.recipeId = null;
     vm.recipe = null;
@@ -34,11 +35,18 @@
 
     function onRecipeLoaded(recipeData) {
       vm.recipe = recipeData;
+      vm.attribution = vm.recipe.attribution.html
+          .replace(/http:\/\//g, 'https://');
       for (var i = 0; i < vm.recipe.rating; i++) {
         vm.recipeRating.push(1);
       }
+      vm.recipeImage = vm.recipe.images[0].hostedLargeUrl
+          .replace(/http:\/\//g, 'https://');
       vm.isCurrentRecipe = currentRecipeService.getRecipe() &&
           currentRecipeService.getRecipe().id === vm.recipe.id;
+      if (vm.isCurrentRecipe) {
+        voiceControlService.activate();
+      }
     }
 
     function onError(err) {
@@ -52,11 +60,13 @@
     function cookRecipe() {
       currentRecipeService.setRecipe(vm.recipe);
       vm.isCurrentRecipe = true;
+      voiceControlService.activate();
     }
 
     function stopCooking() {
       currentRecipeService.clearRecipe();
       vm.isCurrentRecipe = false;
+      voiceControlService.deactivate();
     }
   }
 })();

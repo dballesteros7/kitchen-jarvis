@@ -2,7 +2,8 @@
   <h2 class="center-title md-headline"><span class="brand">GourMate</span> is powered by:</h2>
 </md-subheader>
 <div layout="row" class="md-margin" layout-align="center" layout-wrap="wrap" flex>
-  <md-card flex="25" layout="column" ng-repeat="product in ctrl.products">
+  <md-card class="md-padding" flex="35"
+           layout="column" ng-repeat="product in ctrl.products">
     <img ng-src="{{product.brandImg}}">
     <md-card-content>
       <h3 class="md-title">

@@ -50,6 +50,7 @@
 
     function stop() {
       setListeners();
+      nonStopRecording = false;
       recorder.stop();
     }
 

@@ -35,31 +35,31 @@
     <h1 flex class="brand center-title md-margin md-display-1">
       GourMate
     </h1>
-    <md-menu class="toolbar-right" ng-hide="ctrl.getCurrentUser()">
-      <md-button class="md-icon-button" ng-click="$mdOpenMenu($event)">
-        <md-icon>face</md-icon>
-      </md-button>
-      <md-menu-content width="3">
-        <md-menu-item>
-          <md-button ng-click="ctrl.loginWithGoogle()">
-            Sign in with Google
-          </md-button>
-        </md-menu-item>
-      </md-menu-content>
-    </md-menu>
-    <md-menu class="toolbar-right" ng-show="ctrl.getCurrentUser()">
-      <md-button class="md-icon-button" ng-click="$mdOpenMenu($event)">
-        <img class="toolbar-avatar"
-           ng-src="{{ctrl.getCurrentUser().google.profileImageURL}}">
-      </md-button>
-      <md-menu-content width="3">
-        <md-menu-item>
-          <md-button ng-click="ctrl.signOut()">
-            Sign out
-          </md-button>
-        </md-menu-item>
-      </md-menu-content>
-    </md-menu>
+    <!--<md-menu class="toolbar-right" ng-hide="ctrl.getCurrentUser()">-->
+      <!--<md-button class="md-icon-button" ng-click="$mdOpenMenu($event)">-->
+        <!--<md-icon>face</md-icon>-->
+      <!--</md-button>-->
+      <!--<md-menu-content width="3">-->
+        <!--<md-menu-item>-->
+          <!--<md-button ng-click="ctrl.loginWithGoogle()">-->
+            <!--Sign in with Google-->
+          <!--</md-button>-->
+        <!--</md-menu-item>-->
+      <!--</md-menu-content>-->
+    <!--</md-menu>-->
+    <!--<md-menu class="toolbar-right" ng-show="ctrl.getCurrentUser()">-->
+      <!--<md-button class="md-icon-button" ng-click="$mdOpenMenu($event)">-->
+        <!--<img class="toolbar-avatar"-->
+           <!--ng-src="{{ctrl.getCurrentUser().google.profileImageURL}}">-->
+      <!--</md-button>-->
+      <!--<md-menu-content width="3">-->
+        <!--<md-menu-item>-->
+          <!--<md-button ng-click="ctrl.signOut()">-->
+            <!--Sign out-->
+          <!--</md-button>-->
+        <!--</md-menu-item>-->
+      <!--</md-menu-content>-->
+    <!--</md-menu>-->
   </md-toolbar>
   <md-content flex ui-view layout="column">
   </md-content>
@@ -87,6 +87,7 @@
 <script src="src/speech/speech-synthesis.service.js"></script>
 <script src="src/voice/voice-control.service.js"></script>
 <script src="src/voice/voice-control.controller.js"></script>
+<script src="src/voice/voice-command.service.js"></script>
 <script src="src/recipes/recipe-list.controller.js"></script>
 <script src="src/recipes/recipe-details.controller.js"></script>
 <script src="src/recipes/recipe.service.js"></script>

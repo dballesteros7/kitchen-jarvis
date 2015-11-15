@@ -29,7 +29,9 @@
         function activate() {
           audioPlayer.addEventListener('ended', function() {
             playing = false;
-            scope.onAudioEnded();
+            if (scope.onAudioEnded) {
+              scope.onAudioEnded();
+            }
           });
           audioPlayer.addEventListener('playing', function() {
             playing = true;
